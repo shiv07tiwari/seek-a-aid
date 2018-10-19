@@ -36,28 +36,19 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
-        // set the view now
         setContentView(R.layout.activity_login);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        inputEmail = (EditText) findViewById(R.id.LoginEmail);
-        inputPassword = (EditText) findViewById(R.id.LoginPassword);
-        progressBar = (ProgressBar) findViewById(R.id.ProgressBarLogin);
-        btnReset = (Button) findViewById(R.id.reset);
-        btnLogin=(Button)findViewById(R.id.LoginButton);
+        inputEmail = findViewById(R.id.LoginEmail);
+        inputPassword = findViewById(R.id.LoginPassword);
+        btnReset = findViewById(R.id.reset);
+        btnLogin= findViewById(R.id.LoginButton);
+        progressBar = findViewById(R.id.ProgressBarLogin);
 
-        //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-
-//        btnReset.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
-//            }
-//        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,17 +68,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                //authenticate user
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
                                 progressBar.setVisibility(View.GONE);
                                 if (!task.isSuccessful()) {
-                                    // there was an error
                                     if (password.length() < 6) {
                                         inputPassword.setError(getString(R.string.minimum_password));
                                     } else {
