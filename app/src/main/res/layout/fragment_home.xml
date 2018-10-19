@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivityFragment"
-    tools:showIn="@layout/activity_home">
+    tools:showIn="ayout/activity_home">
 
     <TextView
         android:layout_width="wrap_content"
