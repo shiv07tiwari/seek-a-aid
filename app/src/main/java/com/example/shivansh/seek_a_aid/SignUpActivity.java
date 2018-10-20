@@ -66,6 +66,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
                 String name = inputName.getText().toString().trim();
+                String type=desgn.getText().toString().trim();
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
@@ -81,7 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (TextUtils.isEmpty(desgn)) {
+                if (TextUtils.isEmpty(type)) {
                     Toast.makeText(getApplicationContext(), "Select Designation!!", Toast.LENGTH_SHORT).show();
                     return;
                 }

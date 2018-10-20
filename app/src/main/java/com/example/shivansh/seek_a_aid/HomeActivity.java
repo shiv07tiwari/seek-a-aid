@@ -3,6 +3,7 @@ package com.example.shivansh.seek_a_aid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -34,15 +35,28 @@ public class HomeActivity extends AppCompatActivity {
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
-        Button logout= (Button)findViewById(R.id.log_out);
-        logout.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                auth.signOut();
-                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-            }
-        });
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+
+                        mDrawerLayout.closeDrawers();
+                        if(menuItem.getItemId()==R.id.logout)
+                        {
+                            auth.signOut();
+                            Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+                            startActivity(intent);
+                            return true;
+                        }
+
+                        return true;
+                    }
+                });
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,7 +85,5 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-
-    // this listener will be called when there is change in firebase user session
 
 }

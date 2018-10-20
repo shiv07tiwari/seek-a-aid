@@ -7,12 +7,5 @@
     tools:context=".HomeActivityFragment"
     tools:showIn="ayout/activity_home">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:id="@+id/log_out"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="70dp"
-        android:text="Log Out"/>
 
 </RelativeLayout>
