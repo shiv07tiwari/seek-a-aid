@@ -3,55 +3,116 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content"
     tools:context=".HomeActivityFragment"
-    tools:showIn="ayout/activity_home">
-    <LinearLayout
+    tools:showIn="layout/activity_home">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/black">
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@null"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="5dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/papaya_whip">
         <LinearLayout
             android:layout_width="match_parent"
+            android:id="@+id/h1"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/complaint_id"
+                android:padding="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/gray"
                 android:text="Complaint id"/>
             <TextView
+                android:id="@+id/tag"
+                android:padding="5dp"
                 android:layout_width="match_parent"
-                android:textColor="@color/white"
+                android:textColor="@color/gray"
                 android:gravity="end"
                 android:layout_height="wrap_content"
                 android:text="LABELS"/>
         </LinearLayout>
-        <EditText
+        <TextView
+            android:id="@+id/complain"
+            android:layout_below="@+id/h1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="4"
+            android:padding="2dp"
             android:background="@color/white"
-            android:hint="Enter Your Complaint Here !"/>
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:hint="Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/like"
+            android:padding="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:src="@drawable/up"
+            android:layout_below="@+id/complain" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/unlike"
+            android:layout_toRightOf="@+id/like"
+            android:padding="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:src="@drawable/down"
+            android:layout_below="@+id/complain" />
             <TextView
+                android:id="@+id/blueLikes"
+                android:padding="5dp"
+                android:textSize="22sp"
+                android:layout_marginLeft="10dp"
+                android:layout_toLeftOf="@+id/redLikes"
+                android:layout_below="@+id/complain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/blue"
-                android:text="Blue Likes"/>
+                android:text="56%"/>
             <TextView
+                android:id="@+id/redLikes"
+                android:padding="5dp"
+                android:textSize="22sp"
+                android:layout_below="@+id/complain"
+                android:layout_marginRight="5dp"
                 android:layout_width="wrap_content"
+                android:layout_toLeftOf="@+id/info"
                 android:layout_height="wrap_content"
                 android:textColor="@color/red"
-                android:text="Red Likes"/>
+                android:text="56%"/>
            <ImageView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="end"
-               android:src="@drawable/ic_info_black_24dp"/>
-        </LinearLayout>
-    </LinearLayout>
+               android:id="@+id/info"
+               android:padding="5dp"
+               android:layout_width="30dp"
+               android:layout_below="@+id/complain"
+               android:layout_alignParentEnd="true"
+               android:layout_alignParentRight="true"
+               android:layout_marginTop="6dp"
+               android:layout_marginRight="4dp"
+               android:layout_height="30dp"
+               android:src="@drawable/info"/>
+
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+    </ScrollView>
 
 </RelativeLayout>
