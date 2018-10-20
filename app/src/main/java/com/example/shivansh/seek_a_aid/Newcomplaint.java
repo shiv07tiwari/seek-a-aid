@@ -58,7 +58,7 @@ public class Newcomplaint extends AppCompatActivity {
         Spinner spinner = (Spinner)findViewById(R.id.whichTag);
         spinner.setAdapter(new NewAdapter());
         //id number get as extras
-        
+
         spinner.setSelection(1);
         inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
