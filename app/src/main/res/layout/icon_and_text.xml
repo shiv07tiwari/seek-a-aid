@@ -24,10 +24,5 @@
         android:layout_height="wrap_content"
         android:text="ABC"/>
 
-    <CheckBox
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
