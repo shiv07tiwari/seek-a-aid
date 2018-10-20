@@ -8,6 +8,7 @@
         android:orientation="vertical">
         <EditText
             android:layout_width="match_parent"
+            android:id="@+id/status"
             android:layout_height="100dp"
             android:hint="Add Status Description"/>
         <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"

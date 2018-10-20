@@ -6,13 +6,10 @@
             android:icon="@drawable/ic_launcher_background"
             android:title="Profile" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_tabs"
             android:icon="@drawable/ic_launcher_background"
-            android:title="gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_launcher_background"
-            android:title="slideshow" />
+            android:title="Tags Specific" />
+
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_launcher_background"
