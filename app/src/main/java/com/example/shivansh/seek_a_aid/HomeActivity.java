@@ -9,6 +9,9 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -20,10 +23,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.concurrent.ExecutionException;
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private FirebaseAuth auth;
+    private static RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private static RecyclerView recyclerView;
+    private static ArrayList<complainDetails> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +81,25 @@ public class HomeActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        data = new ArrayList<complainDetails>();
+        for (int i = 0; i < complains.complainsArray.length; i++) {
+            data.add(new complainDetails(
+                    complains.id_[i],
+                    complains.tag[i],
+                    complains.complainsArray[i]
+            ));
+        }
+
+        adapter = new HomeActivityAdapter(data);
+        recyclerView.setAdapter(adapter);
     }
 
 
@@ -83,8 +110,10 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }@Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.e("log","Kuch select hu");
         switch (item.getItemId()) {
             case android.R.id.home:
+                Log.e("log","home hu");
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
             case R.id.action_settings:
@@ -101,8 +130,6 @@ public class HomeActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
-
 
 
 }

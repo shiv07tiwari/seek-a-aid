@@ -19,14 +19,9 @@
             android:theme="@style/AppTheme"
             android:background="@color/blue"
             app:titleTextColor="@color/white" />
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Hello World"/>-->
-        <include layout="@layout/content_home"/>
-
-
+    <include layout="@layout/content_home" />
     </LinearLayout>
+
 
 
 
