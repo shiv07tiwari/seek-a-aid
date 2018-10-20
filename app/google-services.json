@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "177209581999",
+    "firebase_url": "https://seek-a-aid.firebaseio.com",
+    "project_id": "seek-a-aid",
+    "storage_bucket": "seek-a-aid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177209581999:android:ca6fa646268357b4",
+        "android_client_info": {
+          "package_name": "com.example.shivansh.seek_a_aid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177209581999-29a549phfk52kq52ht9ho0lm968mp893.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB04PiyeJ9pNq3F_cLia14fEVtDHqx3z1Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
