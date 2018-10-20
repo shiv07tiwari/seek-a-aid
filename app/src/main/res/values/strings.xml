@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Seek-a-aid</string>
     <string name="action_settings">Settings</string>
+    <string name="newomplaint">New Complaint</string>
+    <string name="submit">Submit</string>
+    <string name="Tag">Select Tag :</string>
 </resources>

@@ -15,9 +15,16 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Newcomplaint"
+            android:label="@string/newomplaint"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".OldComplain"></activity>
     </application>
 
 </manifest>
