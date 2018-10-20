@@ -23,7 +23,9 @@
             android:name=".Newcomplaint"
             android:label="@string/newomplaint"
             android:parentActivityName=".HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
         <activity android:name=".OldComplain"></activity>
         <activity android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
