@@ -28,12 +28,14 @@
         <activity
             android:name=".UserDetailActivity"
             android:label="@string/title_activity_user_detail"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity
+            android:name=".Newcomplaint"
+            android:label="@string/newomplaint"
             android:parentActivityName=".HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.shivansh.seek_a_aid.HomeActivity" />
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".OldComplain"></activity>
+
     </application>
 
 </manifest>
