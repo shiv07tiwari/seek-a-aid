@@ -31,6 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/LoginEmail"
+                android:textColor="@color/light_yellow"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="35dp"
                 android:backgroundTint="@color/white"/>
@@ -57,6 +58,7 @@
                 android:id="@+id/LoginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/light_yellow"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="35dp"
                 android:backgroundTint="@color/white"/>
@@ -76,6 +78,15 @@
             android:background="@drawable/roundedbutton"
             android:text="LOGIN"
             android:textSize="22sp"/>
+
+        <ProgressBar
+            android:id="@+id/ProgressBarLogin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/password"
+            android:layout_marginLeft="180dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone" />
 
         <Button
             android:layout_below="@+id/LoginButton"
@@ -110,12 +121,6 @@
             />
 
     </RelativeLayout>
-    <ProgressBar
-        android:id="@+id/ProgressBarLogin"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone" />
+
 
 </RelativeLayout>

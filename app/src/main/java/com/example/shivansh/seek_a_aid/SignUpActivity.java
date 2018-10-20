@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private FirebaseAuth auth;
 
+    String[] Desgn = { "Gymkhana-Secretary","Gymkhana-Member","Student"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +43,25 @@ public class SignUpActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         desgn=(AutoCompleteTextView) findViewById(R.id.Designation);
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, Desgn);
+        //Find TextView control
+        final AutoCompleteTextView acTextView = (AutoCompleteTextView) findViewById(R.id.Designation);
+        //Set the number of characters the user must type before the drop down list is shown
+        //Set the adapter
+        acTextView.setAdapter(adapter);
+
+        acTextView.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                acTextView.showDropDown();
+                return false;
+            }
+        });
+
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "SignUp clicked!", Toast.LENGTH_SHORT).show();
 
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
@@ -63,7 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (TextUtils.isEmpty(password)) {
+                if (TextUtils.isEmpty(desgn)) {
                     Toast.makeText(getApplicationContext(), "Select Designation!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
