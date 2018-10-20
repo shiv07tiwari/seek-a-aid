@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -123,6 +124,21 @@ public class OldComplain extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "Username: " +  " Email: " , Toast.LENGTH_SHORT).show();
                     }
                 });
+                TextView textView = (TextView)v.findViewById(R.id.status);
+                String status_text = textView.getText().toString();
+
+                String status= onRadioButtonClicked(v);
+                String result=null;
+                updatestatus update = new updatestatus();
+                try {
+                    result = update.execute(status_text,status).get();
+                    Log.e("log",result);
+                    Toast.makeText(OldComplain.this,result,Toast.LENGTH_LONG).show();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
                 AlertDialog dialog = alert.create();
                 dialog.show();
             }
@@ -196,7 +212,7 @@ public class OldComplain extends AppCompatActivity {
         }
     }
 
-    public void onRadioButtonClicked(View view) {
+    public String onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
@@ -204,16 +220,80 @@ public class OldComplain extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.radio_complete:
                 if (checked)
-                    Toast.makeText(OldComplain.this,"Complete",Toast.LENGTH_SHORT).show();
-                    break;
+                    return "completed";
+                    ///Toast.makeText(OldComplain.this,"Complete",Toast.LENGTH_SHORT).show()
             case R.id.radio_in_progress:
                 if (checked)
-                    Toast.makeText(OldComplain.this,"In Progress",Toast.LENGTH_SHORT).show();
-                    break;
+                    return "in progress";
+
             case R.id.radio_not_possible:
                 if(checked)
-                    Toast.makeText(OldComplain.this,"Not Possible",Toast.LENGTH_SHORT).show();
-                    break;
+                    return "Not possible";
+            default:
+                return "Error";
+        }
+    }
+
+    private class updatestatus extends AsyncTask<String, Void, String> {
+
+        public static final String REQUEST_METHOD = "GET";
+        public static final int READ_TIMEOUT = 15000;
+        public static final int CONNECTION_TIMEOUT = 15000;
+
+        protected String doInBackground(String... userdata) {
+
+            String status_text= userdata[0];
+            String status = userdata[1];
+            String inputLine;
+            String result=null;
+            status_text=status_text.replace(" ", "%20");
+            status=status.replace(" ", "%20");
+            //https://prototype-swastik0310.c9users.io/<name>/<email>/<type>
+            String base_url = "https://prototype-swastik0310.c9users.io/newcomplaint/"+status+"/"+status_text ;
+            Log.e("log","Url : "+base_url);
+
+            try {
+                URL myUrl = new URL(base_url);
+
+                //Create a connection
+                HttpURLConnection connection =(HttpURLConnection) myUrl.openConnection();
+
+                connection.setRequestMethod(REQUEST_METHOD);
+                connection.setReadTimeout(READ_TIMEOUT);
+                connection.setConnectTimeout(CONNECTION_TIMEOUT);
+
+                //Connect to our url
+                connection.connect();
+
+                InputStreamReader streamReader = new
+                        InputStreamReader(connection.getInputStream());
+                //Create a new buffered reader and String Builder
+                BufferedReader reader = new BufferedReader(streamReader);
+                StringBuilder stringBuilder = new StringBuilder();
+                //Check if the line we are reading is not null
+                while((inputLine = reader.readLine()) != null){
+                    stringBuilder.append(inputLine);
+                }
+                //Close our InputStream and Buffered reader
+                reader.close();
+                streamReader.close();
+                //Set our result equal to our stringBuilder
+                //result = stringBuilder.toString();
+                result = stringBuilder.toString();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        protected void onProgressUpdate(Integer... progress) {
+
+        }
+
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
         }
     }
 }

@@ -52,8 +52,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         auth=FirebaseAuth.getInstance();
-        context = HomeActivity.this;
-       // Log.e("LOG","User : "+auth.getCurrentUser().getEmail());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
@@ -89,6 +87,11 @@ public class HomeActivity extends AppCompatActivity {
                         }
                         if(menuItem.getItemId()==R.id.profie) {
                             Intent intent = new Intent(HomeActivity.this,UserDetailActivity.class);
+                            startActivity(intent);
+                            return true;
+                        }
+                        if(menuItem.getItemId()==R.id.nav_tabs) {
+                            Intent intent = new Intent(HomeActivity.this,TextTabActivity.class);
                             startActivity(intent);
                             return true;
                         }
