@@ -28,6 +28,7 @@
         <activity
             android:name=".UserDetailActivity"
             android:label="@string/title_activity_user_detail"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".HomeActivity"></activity>
         <activity
             android:name=".Newcomplaint"
