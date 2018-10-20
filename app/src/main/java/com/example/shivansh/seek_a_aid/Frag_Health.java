@@ -40,17 +40,17 @@ public class Frag_Health extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        data = new ArrayList<complainDetails>();
-        for (int i = 0; i < complains.complainsArray.length; i++) {
-            data.add(new complainDetails(
-                    complains.id_[i],
-                    complains.tag[i],
-                    complains.complainsArray[i]
-            ));
-        }
+//        data = new ArrayList<complainDetails>();
+//        for (int i = 0; i < complains.complainsArray.length; i++) {
+//            data.add(new complainDetails(
+//                    complains.id_[i],
+//                    complains.tag[i],
+//                    complains.complainsArray[i]
+//            ));
+//        }
 
-        adapter = new HomeActivityAdapter(data);
-        recyclerView.setAdapter(adapter);
+       // adapter = new HomeActivityAdapter(data);
+       // recyclerView.setAdapter(adapter);
         return rootview;
     }
 
