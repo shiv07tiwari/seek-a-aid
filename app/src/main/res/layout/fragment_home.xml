@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivityFragment"
     tools:showIn="ayout/activity_home">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/newcom"
+            android:layout_height="wrap_content"
+            android:text="newComplaint"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/oldcom"
+            android:layout_height="wrap_content"
+            android:text="oldComplaint"/>
+
+
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
