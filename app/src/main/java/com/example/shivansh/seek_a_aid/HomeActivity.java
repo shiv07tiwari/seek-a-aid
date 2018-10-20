@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,8 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.concurrent.ExecutionException;
 
 public class HomeActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
@@ -27,11 +30,22 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         auth=FirebaseAuth.getInstance();
+       // Log.e("LOG","User : "+auth.getCurrentUser().getEmail());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        String result=null;
+        UserDetailActivity.loadDataofuser loadData = new UserDetailActivity.loadDataofuser();
+        try {
+            result = loadData.execute(auth.getCurrentUser().getEmail()).get();
+            Log.e("log","JSON : "+result);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
@@ -47,6 +61,11 @@ public class HomeActivity extends AppCompatActivity {
                         {
                             auth.signOut();
                             Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+                            startActivity(intent);
+                            return true;
+                        }
+                        if(menuItem.getItemId()==R.id.profie) {
+                            Intent intent = new Intent(HomeActivity.this,UserDetailActivity.class);
                             startActivity(intent);
                             return true;
                         }
