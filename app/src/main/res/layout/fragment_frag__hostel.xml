@@ -8,13 +8,6 @@
     tools:context=".TextTabActivity"
     >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarhostel"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:theme="@style/AppTheme"
-        android:background="@color/blue"
-        app:titleTextColor="@color/white" />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

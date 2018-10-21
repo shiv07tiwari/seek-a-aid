@@ -103,7 +103,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             android:gravity="center"
             android:paddingLeft="10dp"
             android:text="52%"
-            android:textColor="?attr/colorControlActivated" />
+            android:textColor="@color/red" />
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"

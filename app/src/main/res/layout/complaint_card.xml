@@ -20,12 +20,12 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:cardBackgroundColor="@null"
-        app:cardCornerRadius="4dp"
+        app:cardCornerRadius="2dp"
         app:cardElevation="5dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/papaya_whip">
+        android:background="@color/white">
         <LinearLayout
             android:layout_width="match_parent"
             android:id="@+id/h1"
@@ -36,13 +36,14 @@
                 android:padding="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/gray"
+                android:textColor="@color/dodger_blue"
+                android:textSize="15dp"
                 android:text="Complaint id"/>
             <TextView
                 android:id="@+id/tag"
                 android:padding="5dp"
                 android:layout_width="match_parent"
-                android:textColor="@color/gray"
+                android:textColor="@color/dodger_blue"
                 android:gravity="end"
                 android:layout_height="wrap_content"
                 android:text="LABELS"/>
@@ -53,47 +54,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="4"
-            android:padding="2dp"
+            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="3dp"
             android:background="@color/white"
+            android:textColor="@color/dark_gray"
             android:hint="Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !"/>
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:id="@+id/like"
             android:padding="5dp"
             android:layout_marginLeft="5dp"
             android:layout_centerVertical="true"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:src="@drawable/up"
             android:layout_below="@+id/complain" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:id="@+id/unlike"
             android:layout_toRightOf="@+id/like"
             android:padding="5dp"
             android:layout_marginLeft="5dp"
             android:layout_centerVertical="true"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:src="@drawable/down"
             android:layout_below="@+id/complain" />
             <TextView
                 android:id="@+id/blueLikes"
-                android:padding="5dp"
-                android:textSize="22sp"
-                android:layout_marginLeft="10dp"
+                android:padding="2dp"
+                android:textSize="16sp"
+                android:layout_marginTop="9dp"
                 android:layout_toLeftOf="@+id/redLikes"
                 android:layout_below="@+id/complain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blue"
+                android:textColor="@color/dodger_blue"
                 android:text="56%"/>
             <TextView
                 android:id="@+id/redLikes"
-                android:padding="5dp"
-                android:textSize="22sp"
+                android:padding="2dp"
+                android:layout_marginTop="9dp"
+                android:textSize="16sp"
                 android:layout_below="@+id/complain"
-                android:layout_marginRight="5dp"
                 android:layout_width="wrap_content"
                 android:layout_toLeftOf="@+id/info"
                 android:layout_height="wrap_content"
@@ -101,12 +107,12 @@
                 android:text="56%"/>
            <ImageView
                android:id="@+id/info"
-               android:padding="5dp"
+               android:padding="3dp"
                android:layout_width="30dp"
                android:layout_below="@+id/complain"
                android:layout_alignParentEnd="true"
                android:layout_alignParentRight="true"
-               android:layout_marginTop="6dp"
+               android:layout_marginTop="8dp"
                android:layout_marginRight="4dp"
                android:layout_height="30dp"
                android:src="@drawable/info"/>

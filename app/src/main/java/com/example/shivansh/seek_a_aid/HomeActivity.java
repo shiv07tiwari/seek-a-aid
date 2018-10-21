@@ -96,6 +96,12 @@ public class HomeActivity extends AppCompatActivity {
                             return true;
                         }
 
+                        if(menuItem.getItemId()==R.id.addcomp) {
+                            Intent intent = new Intent(HomeActivity.this,Newcomplaint.class);
+                            startActivity(intent);
+                            return true;
+                        }
+
                         return true;
                     }
                 });
@@ -123,8 +129,6 @@ public class HomeActivity extends AppCompatActivity {
             case android.R.id.home:
                 Log.e("log","home hu");
                 mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
-            case R.id.action_settings:
                 return true;
         }
         return super.onOptionsItemSelected(item);
