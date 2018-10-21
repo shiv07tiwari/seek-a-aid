@@ -36,6 +36,7 @@ public class SignUpActivity extends AppCompatActivity {
     private Button btnSignUp;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
+    private Button btnLogin;
 
     String[] Desgn = { "Gymkhana-Secretary","Gymkhana-Member","Student"};
     @Override
@@ -51,6 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
         inputPassword = findViewById(R.id.Password);
         progressBar = findViewById(R.id.progressBar);
         desgn= findViewById(R.id.Designation);
+        btnLogin=findViewById(R.id.SignIn);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, Desgn);
         //Find TextView control
@@ -68,6 +70,16 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                  Intent i=new Intent(SignUpActivity.this,LoginActivity.class);
+                  startActivity(i);
+                  finish();
+
+            }
+        });
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

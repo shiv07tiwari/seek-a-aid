@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
     public void SignUp(View v){
         Intent i=new Intent(this,SignUpActivity.class);
         startActivity(i);
+        finish();
     }
 }
 

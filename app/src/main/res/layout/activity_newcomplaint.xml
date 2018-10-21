@@ -12,7 +12,7 @@
         android:id="@+id/toolbar"
         android:layout_height="?attr/actionBarSize"
         android:theme="@style/AppTheme"
-        android:background="@color/colorAccent"
+        android:background="@color/black"
         app:titleTextColor="@color/colorPrimaryDark">
     </android.support.v7.widget.Toolbar>
 
@@ -26,6 +26,11 @@
             android:id="@+id/label"
             android:layout_weight="1"
             android:layout_width="match_parent"
+            android:textColor="@color/dark_green"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="20sp"
             android:layout_height="0dp"
             android:text="TextView" />
         <ScrollView
@@ -36,6 +41,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:id="@+id/complain_text"
+                android:textColor="@color/gray"
                 android:layout_height="match_parent" />
         </ScrollView>
 
@@ -46,7 +52,10 @@
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
+                android:fontFamily="sans-serif-condensed"
                 android:layout_weight="1"
+                android:textSize="22sp"
+                android:textColor="@color/dark_green"
                 android:text="@string/Tag"
                 android:gravity="center"
                 android:layout_height="match_parent" />
@@ -72,9 +81,9 @@
                 android:id="@+id/submit"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
-                android:background="?android:attr/actionModeBackground"
+                android:background="@android:color/holo_red_dark"
                 android:text="@string/submit"
-                android:textColor="@android:color/holo_red_dark" />
+                android:textColor="@android:color/white" />
         </FrameLayout>
 
 

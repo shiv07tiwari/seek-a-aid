@@ -6,7 +6,7 @@
     <ImageView android:layout_width="0dp"
         android:id="@+id/icon"
         android:layout_weight="3"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:src="@drawable/ic_launcher_foreground"/>
 
     <LinearLayout
@@ -20,7 +20,7 @@
     <TextView android:id="@+id/nameOfTag"
         android:layout_width="0dp"
         android:layout_weight="4"
-        android:gravity="center"
+        android:layout_gravity="center_vertical"
         android:layout_height="wrap_content"
         android:text="ABC"/>
 

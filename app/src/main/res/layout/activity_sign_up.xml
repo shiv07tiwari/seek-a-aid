@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homescreen"
+    android:background="@drawable/back3"
     tools:context=".SignUpActivity">
 
     <RelativeLayout
@@ -22,6 +22,7 @@
             android:maxLines="1"
             android:singleLine="true"
             android:layout_marginRight="20dp"
+            android:fontFamily="sans-serif-condensed"
             android:layout_marginTop="78dp"
             android:textColorHint="@color/light_yellow"
             android:textColor="@color/light_yellow"
@@ -38,6 +39,7 @@
             android:layout_marginEnd="20dp"
             android:maxLines="1"
             android:singleLine="true"
+            android:fontFamily="sans-serif-condensed"
             android:backgroundTint="@color/light_yellow"
             android:layout_marginRight="20dp"
             android:layout_marginTop="8dp"
@@ -52,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-condensed"
             android:backgroundTint="@color/light_yellow"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -78,6 +81,8 @@
             android:layout_below="@id/Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -94,9 +99,28 @@
         <Button
 
             android:id="@+id/submitsignup"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/orange"
+            android:layout_above="@+id/SignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/roundedbutton"
+            android:backgroundTint="@color/light_yellow"
+            android:text="SIGN UP"
+            android:textSize="24sp"/>
+
+        <Button
+
+            android:id="@+id/SignIn"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="35dp"
             android:textColor="@color/orange"
+            android:fontFamily="sans-serif-condensed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
@@ -105,8 +129,8 @@
             android:layout_marginEnd="25dp"
             android:background="@drawable/roundedbutton"
             android:backgroundTint="@color/light_yellow"
-            android:text="SIGN UP"
-            android:textSize="22sp"/>
+            android:text="LOGIN"
+            android:textSize="24sp"/>
 
 
     </RelativeLayout>

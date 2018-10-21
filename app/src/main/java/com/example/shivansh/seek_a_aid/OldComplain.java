@@ -8,10 +8,13 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,14 +40,25 @@ public class OldComplain extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     MyAdapter mAdapter;
+    TextView complainView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_old_complain);
+        Toolbar toolbar = findViewById(R.id.toolbar1);
+        setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
+
+        if(actionbar!=null) {
+            actionbar.setDisplayHomeAsUpEnabled(true);
+        }
+
         String[] values  = new String[] { "Android", "iPhone", "WindowsMobile",
                 "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
                 "Linux", "OS/2" };
+
+
 
         recyclerView = (RecyclerView) findViewById(R.id.statusList);
         ArrayList<String> list = new ArrayList<String>();
@@ -52,6 +66,8 @@ public class OldComplain extends AppCompatActivity {
             list.add(values[i]);
         }
 
+        complainView=findViewById(R.id.complain1);
+        complainView.setMovementMethod(new ScrollingMovementMethod());
         TextView allot_blink = findViewById(R.id.text_please_allot);
         ObjectAnimator anim = ObjectAnimator.ofInt(allot_blink, "backgroundColor", Color.WHITE, Color.RED,
                 Color.WHITE);

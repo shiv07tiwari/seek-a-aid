@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapter.MyViewHolder> {
 
     private ArrayList<complainDetails> dataSet;
+    boolean fun,fun1;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -23,6 +24,7 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
         TextView complain;
         ImageView likeButton;
         ImageView unlikebutton;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -64,13 +66,15 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
         label.setText(dataSet.get(listPosition).getTag());
         complain.setText(dataSet.get(listPosition).getComplain());
 
+        fun=false;
+        fun1=false;
+
         LButton.setOnClickListener(new View.OnClickListener() {
 
-            boolean fun=false;
             @Override
             public void onClick(View v) {
                 //implement onClick
-                if(fun==false) {
+                if(fun==false && fun1==false) {
                     LButton.setImageResource(R.drawable.upred);
                     fun=true;
                 }
@@ -83,11 +87,10 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
 
         ULButton.setOnClickListener(new View.OnClickListener() {
 
-            boolean fun1=false;
             @Override
             public void onClick(View v) {
                 //implement onClick
-                if(fun1==false) {
+                if(fun1==false && fun==false) {
                     ULButton.setImageResource(R.drawable.downred);
                     fun1=true;
                 }

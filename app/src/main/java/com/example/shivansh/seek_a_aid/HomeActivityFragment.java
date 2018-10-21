@@ -1,5 +1,6 @@
 package com.example.shivansh.seek_a_aid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -19,10 +20,11 @@ public class HomeActivityFragment extends Fragment {
     private FlowingDrawer mDrawer;
     private boolean fabExpanded = false;
     private FloatingActionButton fabSettings;
+    private FloatingActionButton FabSave,FabMess,FabAcad;
     private LinearLayout layoutFabSave;
     private LinearLayout layoutFabEdit;
     private LinearLayout layoutFabPhoto;
-
+    private Context context;
     public HomeActivityFragment() {
     }
 
@@ -32,6 +34,7 @@ public class HomeActivityFragment extends Fragment {
         View rootview =  inflater.inflate(R.layout.fragment_home, container, false);
         Button newCom = rootview.findViewById(R.id.newcom);
         Button oldCom = rootview.findViewById(R.id.oldcom);
+        context=getContext();
         newCom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +42,7 @@ public class HomeActivityFragment extends Fragment {
                 startActivity(i);
             }
         });
+
         oldCom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,8 +53,10 @@ public class HomeActivityFragment extends Fragment {
         });
 
         fabSettings = (FloatingActionButton) rootview.findViewById(R.id.fabSetting);
-
-        layoutFabSave = (LinearLayout) rootview.findViewById(R.id.layoutFabSave);
+        layoutFabSave=(LinearLayout)rootview.findViewById(R.id.layoutFabSave);
+        FabSave = (FloatingActionButton) rootview.findViewById(R.id.fabSave);
+        FabMess = (FloatingActionButton) rootview.findViewById(R.id.fabPhoto);
+        FabAcad = (FloatingActionButton) rootview.findViewById(R.id.fabEdit);
         layoutFabEdit = (LinearLayout) rootview.findViewById(R.id.layoutFabEdit);
         layoutFabPhoto = (LinearLayout) rootview.findViewById(R.id.layoutFabPhoto);
         //layoutFabSettings = (LinearLayout) this.findViewById(R.id.layoutFabSettings);
@@ -69,18 +75,33 @@ public class HomeActivityFragment extends Fragment {
             }
         });
 
-        layoutFabSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(),Newcomplaint.class).putExtra("HC",0);
-            }
-        });
-        layoutFabEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(),Newcomplaint.class).putExtra("MC",1);
-            }
-        });
+//        FabSave.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(context,Newcomplaint.class);
+//                i.putExtra("fabSave",0);
+//                //i.putExtra("epuzzle", "fabSave");
+//                startActivity(i);
+//            }
+//        });
+//        /*FabAcad.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getContext(),Newcomplaint.class);
+//                i.putExtra("fabSave",1);
+//                //i.putExtra("epuzzle", "fabSave");
+//                startActivity(i);
+//            }
+//        })*/;
+//        FabMess.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(context,Newcomplaint.class);
+//                i.putExtra("fabSave",1);
+//                //i.putExtra("epuzzle", "fabSave");
+//                startActivity(i);
+//            }
+//        });
 
         //Only main FAB is visible in the beginning
         closeSubMenusFab();

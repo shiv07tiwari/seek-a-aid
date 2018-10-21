@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homescreen"
+    android:background="@drawable/back3"
     tools:context=".LoginActivity">
 
     <RelativeLayout
@@ -71,13 +71,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+            android:fontFamily="sans-serif-smallcaps"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="30dp"
             android:textColor="@color/white"
             android:background="@drawable/roundedbutton"
             android:text="LOGIN"
-            android:textSize="22sp"/>
+            android:textSize="24sp"/>
 
         <ProgressBar
             android:id="@+id/ProgressBarLogin"
@@ -98,10 +99,11 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginStart="25dp"
+            android:fontFamily="sans-serif-smallcaps"
             android:layout_marginEnd="25dp"
             android:background="@drawable/roundedbutton"
             android:text="SIGN UP"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:onClick="SignUp"/>
 
         <Button
@@ -109,6 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/signup"
+
             android:layout_alignParentRight="true"
             android:layout_marginRight="25dp"
             android:layout_marginTop="3dp"

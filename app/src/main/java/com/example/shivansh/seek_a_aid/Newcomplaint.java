@@ -1,6 +1,7 @@
 package com.example.shivansh.seek_a_aid;
 
 import android.content.Context;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +60,12 @@ public class Newcomplaint extends AppCompatActivity {
         Spinner spinner = (Spinner)findViewById(R.id.whichTag);
         spinner.setAdapter(new NewAdapter());
         //id number get as extras
+//        Bundle bundle = getIntent().getExtras();
+//        int ID = 0;
+//        if(bundle!=null) {
+//
+//            ID = bundle.getInt("fabSave");
+//        }
 
         spinner.setSelection(1);
         inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -127,15 +135,19 @@ public class Newcomplaint extends AppCompatActivity {
             }
 
             TextView textView = convertView.findViewById(R.id.nameOfTag);
+            ImageView imageView=convertView.findViewById(R.id.icon);
+
             if (position==0) {
                 textView.setText("Health Center");
+                imageView.setImageResource(R.drawable.pills);
+
             }
             else if (position==1) {
                 textView.setText("Mess commitee");
+                imageView.setImageResource(R.drawable.fork);
             }
             return convertView;
         }
-
 
     }
 
