@@ -8,19 +8,14 @@
     tools:context=".TextTabActivity"
     >
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
-            android:src="@drawable/acad" />
+            android:layout_marginTop="5dp"
+            android:src="@drawable/hostel" />
 
-
-    </FrameLayout>
 
     <TextView
         android:layout_width="match_parent"

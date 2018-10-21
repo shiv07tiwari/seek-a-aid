@@ -27,10 +27,11 @@ public class TextTabActivity extends AppCompatActivity implements MaterialTabLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbartabs);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbartabs);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);*/
+        actionbar.setDisplayHomeAsUpEnabled(true);
 
         tabHost = (MaterialTabHost) this.findViewById(R.id.tabHost);
         pager = (ViewPager) this.findViewById(R.id.pager );

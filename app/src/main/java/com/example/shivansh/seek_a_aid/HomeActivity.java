@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     private static complaintArray CA;
     private static Context context;
     public static ArrayList<complainDetails> extradata;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +145,8 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
+
+    //    @Override
 //    protected void onResume() {
 //        super.onResume();
 //        adapter.notifyDataSetChanged();

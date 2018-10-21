@@ -151,6 +151,7 @@ public class Newcomplaint extends AppCompatActivity {
             }
             else if (position ==2){
                 textView.setText("Hostel Maintainance");
+                imageView.setImageResource(R.drawable.bed);
             }
             return convertView;
         }

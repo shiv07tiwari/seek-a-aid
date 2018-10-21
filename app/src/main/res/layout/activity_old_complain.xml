@@ -33,20 +33,37 @@
         <TextView
             android:layout_width="wrap_content"
             android:id="@+id/ID"
-            android:textColor="@color/gray"
+            android:textColor="@color/dim_gray"
             android:text="Complaint ID - 20"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:textSize="16sp"
             android:layout_gravity="center_vertical"
             android:layout_height="wrap_content" />
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tag2"
+            android:id="@+id/blue_per"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="20sp"
+            android:paddingRight="10dp"
+            android:text="52%"
+            android:textColor="@color/dodger_blue" />
+
         <ImageView
+            android:id="@+id/tag2"
             android:layout_width="35dp"
             android:layout_margin="5dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_height="35dp"
             android:src="@drawable/fork"/>
 
@@ -57,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="145dp"
             android:scrollbars="vertical"
-            android:textColor="@color/black"
+            android:textColor="@color/dodger_blue"
             android:background="@drawable/textview_border"
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
@@ -73,43 +90,13 @@
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/white"
-        android:layout_marginRight="13sp"
-        android:layout_marginLeft="13sp"
-        android:layout_marginStart="13sp"
-        android:layout_marginEnd="13sp"
-        android:layout_weight="1">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/blue_per"
-            android:gravity="center"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="20sp"
-            android:paddingRight="10dp"
-            android:text="52%"
-            android:textColor="@color/blue" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="20sp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:id="@+id/red_per"
-            android:paddingLeft="10dp"
-            android:text="52%"
-            android:textColor="@color/red" />
-    </LinearLayout>
+
+
     <TextView
         android:layout_width="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:paddingRight="10dp"
         android:paddingEnd="10dp"
@@ -123,11 +110,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
         android:text="PLEASE ALLOT THE MEMBERS!"/>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_margin="3dp">
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/textview_border"
         android:padding="5dp"
-        android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
@@ -166,6 +157,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             android:textSize="15sp"
             android:text="Yet To be Alloted" />
     </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_margin="3dp">
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
