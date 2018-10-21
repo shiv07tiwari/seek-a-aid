@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -24,6 +25,7 @@ public class HomeActivityFragment extends Fragment {
     private LinearLayout layoutFabSave;
     private LinearLayout layoutFabEdit;
     private LinearLayout layoutFabPhoto;
+    private View mShadowView;
     private Context context;
     public HomeActivityFragment() {
     }
@@ -32,25 +34,7 @@ public class HomeActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview =  inflater.inflate(R.layout.fragment_home, container, false);
-        Button newCom = rootview.findViewById(R.id.newcom);
-        Button oldCom = rootview.findViewById(R.id.oldcom);
-        context=getContext();
-        newCom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(),Newcomplaint.class);
-                startActivity(i);
-            }
-        });
 
-        oldCom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(),OldComplain.class);
-                startActivity(i);
-
-            }
-        });
 
         fabSettings = (FloatingActionButton) rootview.findViewById(R.id.fabSetting);
         layoutFabSave=(LinearLayout)rootview.findViewById(R.id.layoutFabSave);
@@ -59,51 +43,22 @@ public class HomeActivityFragment extends Fragment {
         FabAcad = (FloatingActionButton) rootview.findViewById(R.id.fabEdit);
         layoutFabEdit = (LinearLayout) rootview.findViewById(R.id.layoutFabEdit);
         layoutFabPhoto = (LinearLayout) rootview.findViewById(R.id.layoutFabPhoto);
-        //layoutFabSettings = (LinearLayout) this.findViewById(R.id.layoutFabSettings);
+        mShadowView=rootview.findViewById(R.id.shadowView);
 
-        //When main Fab (Settings) is clicked, it expands if not expanded already.
-        //Collapses if main FAB was open already.
-        //This gives FAB (Settings) open/close behavior
         fabSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (fabExpanded == true){
+                    mShadowView.setVisibility(View.GONE);
                     closeSubMenusFab();
                 } else {
+                    mShadowView.setVisibility(View.VISIBLE);
                     openSubMenusFab();
                 }
             }
         });
 
-//        FabSave.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(context,Newcomplaint.class);
-//                i.putExtra("fabSave",0);
-//                //i.putExtra("epuzzle", "fabSave");
-//                startActivity(i);
-//            }
-//        });
-//        /*FabAcad.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(getContext(),Newcomplaint.class);
-//                i.putExtra("fabSave",1);
-//                //i.putExtra("epuzzle", "fabSave");
-//                startActivity(i);
-//            }
-//        })*/;
-//        FabMess.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(context,Newcomplaint.class);
-//                i.putExtra("fabSave",1);
-//                //i.putExtra("epuzzle", "fabSave");
-//                startActivity(i);
-//            }
-//        });
 
-        //Only main FAB is visible in the beginning
         closeSubMenusFab();
         return rootview;
     }
@@ -113,8 +68,9 @@ public class HomeActivityFragment extends Fragment {
         layoutFabSave.setVisibility(View.INVISIBLE);
         layoutFabEdit.setVisibility(View.INVISIBLE);
         layoutFabPhoto.setVisibility(View.INVISIBLE);
-        fabSettings.setImageResource(R.drawable.common_google_signin_btn_icon_dark_normal);
+        fabSettings.setRotation(90);
         fabExpanded = false;
+
     }
 
     //Opens FAB submenus
@@ -122,8 +78,9 @@ public class HomeActivityFragment extends Fragment {
         layoutFabSave.setVisibility(View.VISIBLE);
         layoutFabEdit.setVisibility(View.VISIBLE);
         layoutFabPhoto.setVisibility(View.VISIBLE);
+        fabSettings.setRotation(45);
         //Change settings icon to 'X' icon
-        fabSettings.setImageResource(R.drawable.common_google_signin_btn_text_light_focused);
+        //fabSettings.setImageResource(R.drawable.common_google_signin_btn_text_light_focused);
         fabExpanded = true;
     }
 

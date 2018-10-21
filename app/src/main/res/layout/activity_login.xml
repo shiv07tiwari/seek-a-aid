@@ -58,6 +58,7 @@
                 android:id="@+id/LoginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:textColor="@color/light_yellow"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="35dp"

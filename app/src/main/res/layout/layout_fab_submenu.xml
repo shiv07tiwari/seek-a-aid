@@ -3,25 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fabFrame"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom|end"
     android:layout_marginTop="?attr/actionBarSize"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <LinearLayout
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:layout_alignParentRight="true"
             android:id="@+id/layoutFabPhoto"
+            android:padding="3dp"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/layoutFabEdit"
@@ -57,17 +56,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/fork"
-                app:backgroundTint="@android:color/white"
-                app:fabSize="mini" />
+                app:backgroundTint="@color/light_yellow"
+                app:fabSize="normal" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layoutFabEdit"
             android:layout_width="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/layoutFabSave"
+            android:padding="3dp"
+
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:gravity="center_vertical"
@@ -91,7 +92,7 @@
                     android:paddingTop="@dimen/cardview_vertical_padding"
                     android:paddingRight="@dimen/cardview_horizontal_padding"
                     android:paddingBottom="@dimen/cardview_vertical_padding"
-                    android:text="Academic_related"
+                    android:text="Hostel_related"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textStyle="bold" />
 
@@ -101,14 +102,15 @@
                 android:id="@+id/fabEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/acad"
-                app:backgroundTint="@android:color/white"
-                app:fabSize="mini" />
+                android:src="@drawable/bed"
+                app:backgroundTint="@color/light_yellow"
+                app:fabSize="normal" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layoutFabSave"
+            android:padding="3dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
@@ -144,20 +146,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/pills"
-                app:backgroundTint="@color/white"
-                app:fabSize="mini" />
+                app:backgroundTint="@color/light_yellow"
+                app:fabSize="normal" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="5dp"
             android:id="@+id/layoutFabSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/layoutFabPhoto"
-            android:layout_gravity="bottom|end"
             android:layout_marginBottom="50dp"
-            android:gravity="center_vertical"
+            android:layout_margin="8dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:orientation="horizontal">
@@ -166,8 +166,8 @@
                 android:id="@+id/fabSetting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/round_add_button"
-                app:backgroundTint="?attr/colorPrimary"
+                android:src="@drawable/add"
+                app:backgroundTint="@color/red"
                 app:fabSize="normal" />
 
         </LinearLayout>
