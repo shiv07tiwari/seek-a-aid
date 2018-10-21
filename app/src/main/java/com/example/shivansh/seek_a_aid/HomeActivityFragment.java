@@ -57,6 +57,32 @@ public class HomeActivityFragment extends Fragment {
                 }
             }
         });
+        FabSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(),Newcomplaint.class);
+                i.putExtra("fabSave",0);
+                startActivity(i);
+            }
+        });
+        FabAcad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(),Newcomplaint.class);
+                i.putExtra("fabSave",1);
+                //i.putExtra("epuzzle", "fabSave");
+                startActivity(i);
+            }
+        });
+        FabMess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(),Newcomplaint.class);
+                i.putExtra("fabSave",2);
+                //i.putExtra("epuzzle", "fabSave");
+                startActivity(i);
+            }
+        });
 
 
         closeSubMenusFab();

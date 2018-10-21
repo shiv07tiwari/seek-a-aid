@@ -59,6 +59,14 @@ public class Newcomplaint extends AppCompatActivity {
 
         Spinner spinner = (Spinner)findViewById(R.id.whichTag);
         spinner.setAdapter(new NewAdapter());
+        Bundle bundle = getIntent().getExtras();
+        int ID = 0;
+        if(bundle!=null) {
+
+            ID = bundle.getInt("fabSave");
+        }
+
+        spinner.setSelection(ID);
         //id number get as extras
 //        Bundle bundle = getIntent().getExtras();
 //        int ID = 0;
@@ -67,7 +75,6 @@ public class Newcomplaint extends AppCompatActivity {
 //            ID = bundle.getInt("fabSave");
 //        }
 
-        spinner.setSelection(1);
         inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

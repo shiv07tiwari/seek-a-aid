@@ -45,6 +45,7 @@
         <ImageView
             android:layout_width="35dp"
             android:layout_margin="5dp"
+            android:id="@+id/type_image"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_height="35dp"
@@ -156,6 +157,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
+            android:id="@+id/alloted1"
             android:textSize="15sp"
             android:text="Yet to be Alloted" />
 
@@ -163,6 +165,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
+            android:id="@+id/alloted2"
             android:textSize="15sp"
             android:text="Yet To be Alloted" />
     </LinearLayout>

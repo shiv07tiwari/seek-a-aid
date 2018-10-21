@@ -16,7 +16,6 @@
            android:layout_height="100dp"
            android:id="@+id/status_edit"
            android:hint="Complete/In Progress/Not Possible"/>
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

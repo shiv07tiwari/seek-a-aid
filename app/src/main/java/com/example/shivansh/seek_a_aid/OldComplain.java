@@ -25,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ public class OldComplain extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     MyAdapter mAdapter;
     TextView complainView;
+    TextView alloted1,alloted2;
     static String comp_id;
 
     @SuppressLint("SetTextI18n")
@@ -72,8 +74,14 @@ public class OldComplain extends AppCompatActivity {
             list.add(values[i]);
         }
 
+        alloted1=findViewById(R.id.alloted1);
+        alloted2=findViewById(R.id.alloted2);
         complainView=findViewById(R.id.complain1);
         complainView.setMovementMethod(new ScrollingMovementMethod());
+
+        ImageView image = findViewById(R.id.type_image);
+        String current_type = UserDetailActivity.type;
+
 
         TextView allot_blink = findViewById(R.id.text_please_allot);
         ObjectAnimator anim = ObjectAnimator.ofInt(allot_blink, "backgroundColor", Color.WHITE, Color.RED,
@@ -111,6 +119,12 @@ public class OldComplain extends AppCompatActivity {
                     public void onClick(View v) {
                         EditText name1_t = dialog.findViewById(R.id.member_1_roll);
                         EditText name2_t = dialog.findViewById(R.id.member_2_roll);
+                        EditText name1_set = dialog.findViewById(R.id.member_1_name);
+                        EditText name2_set = dialog.findViewById(R.id.member_2_name);
+
+                        String realname1 = name1_set.getText().toString();
+                        String realname2 = name2_set.getText().toString();
+
                         String name1 = name1_t.getText().toString();
                         String name2 = name2_t.getText().toString();
                         Log.e("loghidgigis",name1+""+name2);

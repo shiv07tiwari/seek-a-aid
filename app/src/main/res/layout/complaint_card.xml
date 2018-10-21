@@ -107,14 +107,15 @@
                 android:text="56%"/>
            <ImageView
                android:id="@+id/info"
+               android:layout_marginLeft="10dp"
                android:padding="3dp"
-               android:layout_width="30dp"
+               android:layout_width="40dp"
                android:layout_below="@+id/complain"
                android:layout_alignParentEnd="true"
                android:layout_alignParentRight="true"
                android:layout_marginTop="8dp"
                android:layout_marginRight="4dp"
-               android:layout_height="30dp"
+               android:layout_height="40dp"
                android:src="@drawable/info"/>
 
     </RelativeLayout>
