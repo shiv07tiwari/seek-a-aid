@@ -63,6 +63,14 @@
             android:textColor="@color/dark_gray"
             android:hint="Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !Your Complaint is Here !"/>
 
+        <LinearLayout
+            android:id="@+id/hr"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/complain"
+            android:layout_height="1dp"
+            android:background="@color/dim_gray"
+            android:layout_margin="3dp">
+        </LinearLayout>
         <ImageView
             android:layout_width="40dp"
             android:id="@+id/like"
@@ -71,7 +79,7 @@
             android:layout_centerVertical="true"
             android:layout_height="40dp"
             android:src="@drawable/up"
-            android:layout_below="@+id/complain" />
+            android:layout_below="@+id/hr" />
 
         <ImageView
             android:layout_width="40dp"
@@ -82,38 +90,17 @@
             android:layout_centerVertical="true"
             android:layout_height="40dp"
             android:src="@drawable/down"
-            android:layout_below="@+id/complain" />
-            <TextView
-                android:id="@+id/blueLikes"
-                android:padding="2dp"
-                android:textSize="16sp"
-                android:layout_marginTop="9dp"
-                android:layout_toLeftOf="@+id/redLikes"
-                android:layout_below="@+id/complain"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/dodger_blue"
-                android:text="56%"/>
-            <TextView
-                android:id="@+id/redLikes"
-                android:padding="2dp"
-                android:layout_marginTop="9dp"
-                android:textSize="16sp"
-                android:layout_below="@+id/complain"
-                android:layout_width="wrap_content"
-                android:layout_toLeftOf="@+id/info"
-                android:layout_height="wrap_content"
-                android:textColor="@color/red"
-                android:text="56%"/>
+            android:layout_below="@+id/hr" />
+
            <ImageView
                android:id="@+id/info"
                android:layout_marginLeft="10dp"
                android:padding="3dp"
                android:layout_width="40dp"
                android:layout_below="@+id/complain"
+               android:layout_marginTop="4dp"
                android:layout_alignParentEnd="true"
                android:layout_alignParentRight="true"
-               android:layout_marginTop="8dp"
                android:layout_marginRight="4dp"
                android:layout_height="40dp"
                android:src="@drawable/info"/>

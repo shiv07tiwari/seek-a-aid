@@ -32,7 +32,6 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
 
         TextView Complaint_Id;
         TextView Tag;
-        TextView BlueLikes, RedLikes;
         TextView complain;
         ImageView likeButton;
         ImageView unlikebutton;
@@ -44,8 +43,6 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
             this.Complaint_Id = (TextView) itemView.findViewById(R.id.complaint_id);
             this.Tag = (TextView) itemView.findViewById(R.id.tag);
             this.complain = (TextView) itemView.findViewById(R.id.complain);
-            this.BlueLikes = (TextView) itemView.findViewById(R.id.blueLikes);
-            this.RedLikes = (TextView) itemView.findViewById(R.id.redLikes);
             this.likeButton=(ImageView)itemView.findViewById(R.id.like);
             this.unlikebutton=(ImageView)itemView.findViewById(R.id.unlike);
             this.report = itemView.findViewById(R.id.info);
@@ -72,7 +69,7 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
 
         TextView C_Id=holder.Complaint_Id;
         TextView label=holder.Tag;
-        TextView BLikes=holder.BlueLikes, RLikes=holder.RedLikes;
+
         TextView complain=holder.complain;
         final ImageView LButton= holder.likeButton;
         final ImageView ULButton=holder.unlikebutton;
@@ -188,12 +185,6 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
             }
         });
 
-        BLikes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), "This is user rating!", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
     private class likemanage extends AsyncTask<String, Void, String> {
 

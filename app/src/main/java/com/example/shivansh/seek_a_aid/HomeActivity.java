@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     private static complaintArray CA;
     private static Context context;
     public static ArrayList<complainDetails> extradata;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +145,8 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
+
+    //    @Override
 //    protected void onResume() {
 //        super.onResume();
 //        adapter.notifyDataSetChanged();
@@ -233,6 +236,9 @@ public class HomeActivity extends AppCompatActivity {
                     String comp_tag = object.getString("tag");
                     String comp_email = object.getString("email");
                     String comp_content=object.getString("content");
+                    String comp_rating = object.getString("rating");
+                    String comp_man1 = object.getString("alotedMember1");
+                    String comp_man2=object.getString("alotedMember2");
 
                     ArrayList<String> comp_status = new ArrayList<>();
                     JSONArray jArray = object.getJSONArray("status");
@@ -249,7 +255,7 @@ public class HomeActivity extends AppCompatActivity {
                         }
                     }
                     Log.e("log",comp_id+" "+comp_tag+" "+comp_content+" "+comp_email+" "+comp_status+" "+comp_status_desc);
-                    complainDetails CD = new complainDetails(comp_id,comp_tag,comp_content,comp_email,comp_status,comp_status_desc);
+                    complainDetails CD = new complainDetails(comp_id,comp_tag,comp_content,comp_email,comp_status,comp_status_desc,comp_rating,comp_man1,comp_man2);
                     CA.addcomplaint(CD);
                     data = CA.getCdata();
                     recyclerView.setHasFixedSize(true);

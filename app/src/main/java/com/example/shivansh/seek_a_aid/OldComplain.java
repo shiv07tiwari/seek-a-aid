@@ -92,6 +92,9 @@ public class OldComplain extends AppCompatActivity {
         anim.setRepeatCount(Animation.INFINITE);
         anim.start();
         final TextView id = findViewById(R.id.ID);
+        TextView rate = findViewById(R.id.blue_per);
+        TextView man1 = findViewById(R.id.alloted1);
+        TextView man2 = findViewById(R.id.alloted2);
         Intent intent = getIntent();
         final String compid = intent.getStringExtra("compid");
 
@@ -99,6 +102,9 @@ public class OldComplain extends AppCompatActivity {
         for(int i=0;i<al.size();i++) {
             if(al.get(i).getComplainId().equals(compid)) {
                 comp_id = al.get(i).getComplainId();
+                rate.setText(al.get(i).getRating());
+                man1.setText(al.get(i).getMember1());
+                man2.setText(al.get(i).getMember2());
                 id.setText("ID : "+al.get(i).getComplainId());
                 complainView.setText(al.get(i).getComplain());
                 break;
@@ -112,9 +118,9 @@ public class OldComplain extends AppCompatActivity {
                 final Dialog dialog = new Dialog(OldComplain.this);
                 dialog.setContentView(R.layout.allot_dialog);
                 dialog.setTitle("Please Allot Members");
-                Button dialogButton = dialog.findViewById(R.id.submit_allotment);
+                final Button dialogButton2 = dialog.findViewById(R.id.submit_allotment);
                 // if button is clicked, close the custom dialog
-                dialogButton.setOnClickListener(new View.OnClickListener() {
+                dialogButton2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         EditText name1_t = dialog.findViewById(R.id.member_1_roll);
@@ -129,11 +135,11 @@ public class OldComplain extends AppCompatActivity {
                         String name2 = name2_t.getText().toString();
                         Log.e("loghidgigis",name1+""+name2);
                         String result;
-                        verifyGymkhana verify = new verifyGymkhana();
+                        setGymkhana verify = new setGymkhana();
                         try {
-                           result = verify.execute(name1,name2).get();
-                           Log.e("log",result);
-                           Toast.makeText(OldComplain.this,result,Toast.LENGTH_LONG).show();
+                            result = verify.execute(name1,name2).get();
+                            Log.e("log",result);
+                            Toast.makeText(OldComplain.this,result,Toast.LENGTH_LONG).show();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         } catch (ExecutionException e) {
@@ -202,6 +208,66 @@ public class OldComplain extends AppCompatActivity {
             String result=null;
             //https://prototype-swastik0310.c9users.io/<name>/<email>/<type>
             String base_url = "https://prototype-swastik0310.c9users.io/alot/volunteer/"+name1+"/"+name2;
+            Log.e("log","Url : "+base_url);
+
+            try {
+                URL myUrl = new URL(base_url);
+
+                //Create a connection
+                HttpURLConnection connection =(HttpURLConnection) myUrl.openConnection();
+
+                connection.setRequestMethod(REQUEST_METHOD);
+                connection.setReadTimeout(READ_TIMEOUT);
+                connection.setConnectTimeout(CONNECTION_TIMEOUT);
+
+                //Connect to our url
+                connection.connect();
+
+                InputStreamReader streamReader = new
+                        InputStreamReader(connection.getInputStream());
+                //Create a new buffered reader and String Builder
+                BufferedReader reader = new BufferedReader(streamReader);
+                StringBuilder stringBuilder = new StringBuilder();
+                //Check if the line we are reading is not null
+                while((inputLine = reader.readLine()) != null){
+                    stringBuilder.append(inputLine);
+                }
+                //Close our InputStream and Buffered reader
+                reader.close();
+                streamReader.close();
+                //Set our result equal to our stringBuilder
+                result = stringBuilder.toString();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        protected void onProgressUpdate(Integer... progress) {
+
+        }
+
+        protected void onPostExecute(String result) {
+
+            super.onPostExecute(result);
+        }
+    }
+    private static class setGymkhana extends AsyncTask<String, Void, String> {
+
+        static final String REQUEST_METHOD = "GET";
+        public static final int READ_TIMEOUT = 15000;
+        public static final int CONNECTION_TIMEOUT = 15000;
+
+        protected String doInBackground(String... userdata) {
+
+            String name1 = userdata[0];
+            String name2 = userdata[1];
+            String inputLine;
+            String result=null;
+            //https://prototype-swastik0310.c9users.io/<name>/<email>/<type>
+            String base_url = "https://prototype-swastik0310.c9users.io/alot/volunteer/"+comp_id+"/"+name1+"/"+name2;
             Log.e("log","Url : "+base_url);
 
             try {
