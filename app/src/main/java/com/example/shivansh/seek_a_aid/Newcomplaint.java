@@ -115,7 +115,7 @@ public class Newcomplaint extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
 
         @Override
@@ -145,6 +145,9 @@ public class Newcomplaint extends AppCompatActivity {
             else if (position==1) {
                 textView.setText("Mess commitee");
                 imageView.setImageResource(R.drawable.fork);
+            }
+            else if (position ==2){
+                textView.setText("Hostel Maintainance");
             }
             return convertView;
         }

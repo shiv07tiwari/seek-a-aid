@@ -1,16 +1,22 @@
 package com.example.shivansh.seek_a_aid;
 
 
+import java.util.ArrayList;
+
 public class complainDetails {
 
-    String id,tag,complain,redlike,bluelike;
-    String version;
-    int id_;
+    private String id,tag,complain,useremail;
+    private ArrayList<String> status;
+    private ArrayList<String> statusdesc;
+    private int redlike,bluelike,rating,totallikes;
 
-    public complainDetails(String id, String Tag, String Complain) {
+    complainDetails(String id, String Tag, String Complain,String useremail,ArrayList<String> status,ArrayList<String> statusdesc) {
+        this.status=status;
         this.id = id;
         this.tag = Tag;
         this.complain = Complain;
+        this.useremail=useremail;
+        this.statusdesc=statusdesc;
     }
 
 
@@ -26,11 +32,25 @@ public class complainDetails {
         return complain;
     }
 
-    public String RedLikes() {
+    public int RedLikes() {
         return redlike;
     }
 
-    public String BlueLikes() {
+    void incredlikes() {
+        redlike++;
+    }
+
+    public int BlueLikes() {
         return bluelike;
+    }
+
+    void incbludelikes() {
+        bluelike++;
+    }
+
+    void inctotalikes() {totallikes++;}
+
+    public int getTotallikes() {
+        return totallikes;
     }
 }

@@ -85,6 +85,14 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String email = inputEmail.getText().toString().trim();
+                if(email.endsWith("iiita.ac.in")) {
+                    Log.e("log","Haan");
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Please Sign In With IIITA Email ID",Toast.LENGTH_LONG).show();
+                    Log.e("log","Naah");
+                    return;
+                }
                 String password = inputPassword.getText().toString().trim();
                 String name = inputName.getText().toString().trim();
                 String type = desgn.getText().toString();
@@ -131,7 +139,6 @@ public class SignUpActivity extends AppCompatActivity {
                         .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(SignUpActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(SignUpActivity.this, "Authentication failed." + task.getException(),

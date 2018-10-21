@@ -15,6 +15,7 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
 
     private ArrayList<complainDetails> dataSet;
     boolean fun,fun1;
+    Context context;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -24,6 +25,7 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
         TextView complain;
         ImageView likeButton;
         ImageView unlikebutton;
+        ImageView report;
 
 
         public MyViewHolder(View itemView) {
@@ -35,6 +37,7 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
             this.RedLikes = (TextView) itemView.findViewById(R.id.redLikes);
             this.likeButton=(ImageView)itemView.findViewById(R.id.like);
             this.unlikebutton=(ImageView)itemView.findViewById(R.id.unlike);
+            this.report = itemView.findViewById(R.id.info);
         }
     }
 
@@ -49,6 +52,7 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
                 .inflate(R.layout.complaint_card, parent, false);
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
+        context=parent.getContext();
         return myViewHolder;
     }
 
@@ -61,6 +65,7 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
         TextView complain=holder.complain;
         final ImageView LButton= holder.likeButton;
         final ImageView ULButton=holder.unlikebutton;
+        final ImageView REPButton = holder.report;
 
         C_Id.setText(dataSet.get(listPosition).getComplainId());
         label.setText(dataSet.get(listPosition).getTag());
