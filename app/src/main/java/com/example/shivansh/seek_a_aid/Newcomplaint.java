@@ -97,7 +97,10 @@ public class Newcomplaint extends AppCompatActivity {
                     sendComplainDetails senddetails = new sendComplainDetails();
                     try {
                         result = senddetails.execute(emailID,complain,tagString).get();
-                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Issue Successfully Added", Toast.LENGTH_LONG).show();
+                        HomeActivity.adapter.notifyDataSetChanged();
+                        finish();
+
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();

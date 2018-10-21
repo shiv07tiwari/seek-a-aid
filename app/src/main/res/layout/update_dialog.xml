@@ -8,31 +8,20 @@
         android:orientation="vertical">
         <EditText
             android:layout_width="match_parent"
-            android:id="@+id/status"
+            android:id="@+id/status_desc_edit"
             android:layout_height="100dp"
             android:hint="Add Status Description"/>
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+       <EditText
+           android:layout_width="match_parent"
+           android:layout_height="100dp"
+           android:id="@+id/status_edit"
+           android:hint="Complete/In Progress/Not Possible"/>
+
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <RadioButton android:id="@+id/radio_complete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Completed"
-                android:onClick="onRadioButtonClicked"/>
-            <RadioButton android:id="@+id/radio_in_progress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="In Progress"
-                android:onClick="onRadioButtonClicked"/>
-            <RadioButton android:id="@+id/radio_not_possible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Not Possible"
-                android:onClick="onRadioButtonClicked"/>
-        </RadioGroup>
-
-
+            android:id="@+id/status_submit"
+            android:text="SUBMIT"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

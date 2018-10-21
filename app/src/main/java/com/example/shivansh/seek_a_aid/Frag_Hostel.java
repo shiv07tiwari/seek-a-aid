@@ -40,6 +40,14 @@ public class Frag_Hostel extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        ArrayList<complainDetails> al = HomeActivity.extradata;
+        ArrayList<complainDetails> all = new ArrayList<complainDetails>();
+        for(int i=0;i<al.size();i++) {
+            if(al.get(i).getTag().equals("Hostel Maintainance")) {
+                all.add(al.get(i));
+            }
+        }
+
 //        data = new ArrayList<complainDetails>();
 //        for (int i = 0; i < complains.complainsArray.length; i++) {
 //            data.add(new complainDetails(
@@ -49,8 +57,8 @@ public class Frag_Hostel extends Fragment {
 //            ));
 //        }
 
-        //adapter = new HomeActivityAdapter(data);
-        //recyclerView.setAdapter(adapter);
+        adapter = new HomeActivityAdapter(all);
+        recyclerView.setAdapter(adapter);
         return rootview;
     }
 

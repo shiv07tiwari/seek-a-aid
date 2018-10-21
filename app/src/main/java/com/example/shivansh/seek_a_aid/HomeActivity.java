@@ -40,12 +40,13 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private FirebaseAuth auth;
-    private static RecyclerView.Adapter adapter;
+    public static RecyclerView.Adapter adapter;
     private static RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     private static ArrayList<complainDetails> data;
     private static complaintArray CA;
     private static Context context;
+    public static ArrayList<complainDetails> extradata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,7 @@ public class HomeActivity extends AppCompatActivity {
                             auth.signOut();
                             Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
                             startActivity(intent);
+                            finish();
                             return true;
                         }
                         if(menuItem.getItemId()==R.id.profie) {
@@ -110,8 +112,6 @@ public class HomeActivity extends AppCompatActivity {
 //        recyclerView.setAdapter(adapter);
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
@@ -138,6 +138,13 @@ public class HomeActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        adapter.notifyDataSetChanged();
+//    }
+
     static class getComplaints extends AsyncTask<String, Void, String> {
 
         static final String REQUEST_METHOD = "GET";
@@ -246,7 +253,7 @@ public class HomeActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(layoutManager);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-
+                    extradata=data;
                     adapter = new HomeActivityAdapter(data);
                     recyclerView.setAdapter(adapter);
                 }

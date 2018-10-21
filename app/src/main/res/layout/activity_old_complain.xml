@@ -54,7 +54,7 @@
 
         <TextView
             android:id="@+id/complain1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="145dp"
             android:scrollbars="vertical"
             android:textColor="@color/black"
@@ -87,6 +87,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:id="@+id/blue_per"
             android:gravity="center"
             android:fontFamily="sans-serif-condensed"
             android:textSize="20sp"
@@ -101,9 +102,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             android:textSize="20sp"
             android:layout_weight="1"
             android:gravity="center"
+            android:id="@+id/red_per"
             android:paddingLeft="10dp"
             android:text="52%"
-            android:textColor="?attr/colorControlActivated" />
+            android:textColor="@color/red" />
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
@@ -155,14 +157,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:text="Arsh Pangal" />
+            android:text="Yet to be Alloted" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:text="Sid" />
+            android:text="Yet To be Alloted" />
     </LinearLayout>
     </LinearLayout>
     <TextView

@@ -52,7 +52,6 @@ public class UserDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String result;
         auth=FirebaseAuth.getInstance();
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -64,6 +63,13 @@ public class UserDetailActivity extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ArrayList<complainDetails> al = HomeActivity.extradata;
+        ArrayList<complainDetails> all = new ArrayList<complainDetails>();
+        for(int i=0;i<al.size();i++) {
+            if(al.get(i).getUseremail().equals(email)) {
+                all.add(al.get(i));
+            }
+        }
 
         //user_email.setText(auth.getCurrentUser().getEmail());
         user_name=findViewById(R.id.user_profile_name);
@@ -81,16 +87,8 @@ public class UserDetailActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        data = new ArrayList<complainDetails>();
-//        for (int i = 0; i < complains.complainsArray.length; i++) {
-//            data.add(new complainDetails(
-//                    complains.id_[i],
-//                    complains.tag[i],
-//                    complains.complainsArray[i],
-//                    "hahaha"
-//            ));
-//        }
-        adapter = new HomeActivityAdapter(data);
+
+        adapter = new HomeActivityAdapter(all);
         recyclerView.setAdapter(adapter);
 
     }

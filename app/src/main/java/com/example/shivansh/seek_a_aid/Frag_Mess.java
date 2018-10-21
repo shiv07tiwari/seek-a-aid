@@ -39,18 +39,16 @@ public class Frag_Mess extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        ArrayList<complainDetails> al = HomeActivity.extradata;
+        ArrayList<complainDetails> all = new ArrayList<complainDetails>();
+        for(int i=0;i<al.size();i++) {
+            if(al.get(i).getTag().equals("Mess commitee")) {
+                all.add(al.get(i));
+            }
+        }
 
-//        data = new ArrayList<complainDetails>();
-//        for (int i = 0; i < complains.complainsArray.length; i++) {
-//            data.add(new complainDetails(
-//                    complains.id_[i],
-//                    complains.tag[i],
-//                    complains.complainsArray[i]
-//            ));
-//        }
-
-      //  adapter = new HomeActivityAdapter(data);
-       // recyclerView.setAdapter(adapter);
+        adapter = new HomeActivityAdapter(all);
+        recyclerView.setAdapter(adapter);
         return rootview;
     }
 

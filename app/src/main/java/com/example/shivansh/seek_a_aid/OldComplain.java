@@ -3,9 +3,11 @@ package com.example.shivansh.seek_a_aid;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
@@ -28,6 +30,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -42,7 +46,9 @@ public class OldComplain extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     MyAdapter mAdapter;
     TextView complainView;
+    static String comp_id;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +66,6 @@ public class OldComplain extends AppCompatActivity {
                 "Linux", "OS/2" };
 
 
-
         recyclerView = (RecyclerView) findViewById(R.id.statusList);
         ArrayList<String> list = new ArrayList<String>();
         for (int i = 0; i < values.length; ++i) {
@@ -69,6 +74,7 @@ public class OldComplain extends AppCompatActivity {
 
         complainView=findViewById(R.id.complain1);
         complainView.setMovementMethod(new ScrollingMovementMethod());
+
         TextView allot_blink = findViewById(R.id.text_please_allot);
         ObjectAnimator anim = ObjectAnimator.ofInt(allot_blink, "backgroundColor", Color.WHITE, Color.RED,
                 Color.WHITE);
@@ -77,6 +83,19 @@ public class OldComplain extends AppCompatActivity {
         anim.setRepeatMode(ValueAnimator.REVERSE);
         anim.setRepeatCount(Animation.INFINITE);
         anim.start();
+        final TextView id = findViewById(R.id.ID);
+        Intent intent = getIntent();
+        final String compid = intent.getStringExtra("compid");
+
+        ArrayList<complainDetails> al = HomeActivity.extradata;
+        for(int i=0;i<al.size();i++) {
+            if(al.get(i).getComplainId().equals(compid)) {
+                comp_id = al.get(i).getComplainId();
+                id.setText("ID : "+al.get(i).getComplainId());
+                complainView.setText(al.get(i).getComplain());
+                break;
+            }
+        }
 
         allot_blink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,50 +131,37 @@ public class OldComplain extends AppCompatActivity {
                 dialog.show();
             }
         });
+
         TextView update_status = findViewById(R.id.text_update_status);
         update_status.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                LayoutInflater inflater = getLayoutInflater();
-                View alertLayout = inflater.inflate(R.layout.update_dialog, null);
-                AlertDialog.Builder alert = new AlertDialog.Builder(OldComplain.this);
-                alert.setTitle("Update Description");
-                alert.setView(alertLayout);
-                // disallow cancel of AlertDialog on click of back button and outside touch
-                alert.setCancelable(false);
-                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-
+            public void onClick(final View v) {
+                final Dialog dialog = new Dialog(OldComplain.this);
+                dialog.setContentView(R.layout.update_dialog);
+                dialog.setTitle("Update");
+                Button dialogButton = dialog.findViewById(R.id.status_submit);
+                dialogButton.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getBaseContext(), "Cancel clicked", Toast.LENGTH_SHORT).show();
+                    public void onClick(View v) {
+                        EditText status_desc = dialog.findViewById(R.id.status_desc_edit);
+                        EditText status = dialog.findViewById(R.id.status_edit);
+                        String name1 = status_desc.getText().toString();
+                        String name2 = status.getText().toString();
+
+                        String result;
+                        updatestatus update = new updatestatus();
+                        try {
+                            result = update.execute(compid,name1,name2).get();
+                            Log.e("log",result);
+                            Toast.makeText(OldComplain.this,result,Toast.LENGTH_LONG).show();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        }
+                        dialog.dismiss();
                     }
                 });
-
-                alert.setPositiveButton("Done", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                       // String user = etUsername.getText().toString();
-                       // String pass = etEmail.getText().toString();
-                        Toast.makeText(getBaseContext(), "Username: " +  " Email: " , Toast.LENGTH_SHORT).show();
-                    }
-                });
-                TextView textView = (TextView)v.findViewById(R.id.status);
-                String status_text = textView.getText().toString();
-
-                String status= onRadioButtonClicked(v);
-                String result=null;
-                updatestatus update = new updatestatus();
-                try {
-                    result = update.execute(status_text,status).get();
-                    Log.e("log",result);
-                    Toast.makeText(OldComplain.this,result,Toast.LENGTH_LONG).show();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-                AlertDialog dialog = alert.create();
                 dialog.show();
             }
         });
@@ -228,29 +234,8 @@ public class OldComplain extends AppCompatActivity {
         }
     }
 
-    public String onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
 
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radio_complete:
-                if (checked)
-                    return "completed";
-                    ///Toast.makeText(OldComplain.this,"Complete",Toast.LENGTH_SHORT).show()
-            case R.id.radio_in_progress:
-                if (checked)
-                    return "in progress";
-
-            case R.id.radio_not_possible:
-                if(checked)
-                    return "Not possible";
-            default:
-                return "Error";
-        }
-    }
-
-    private class updatestatus extends AsyncTask<String, Void, String> {
+    private static class updatestatus extends AsyncTask<String, Void, String> {
 
         public static final String REQUEST_METHOD = "GET";
         public static final int READ_TIMEOUT = 15000;
@@ -258,14 +243,15 @@ public class OldComplain extends AppCompatActivity {
 
         protected String doInBackground(String... userdata) {
 
-            String status_text= userdata[0];
-            String status = userdata[1];
+            String id = userdata[0];
+            String status_text= userdata[1];
+            String status = userdata[2];
             String inputLine;
             String result=null;
             status_text=status_text.replace(" ", "%20");
             status=status.replace(" ", "%20");
             //https://prototype-swastik0310.c9users.io/<name>/<email>/<type>
-            String base_url = "https://prototype-swastik0310.c9users.io/newcomplaint/"+status+"/"+status_text ;
+            String base_url = "https://prototype-swastik0310.c9users.io/updatecomplaint/"+id+"/"+status_text+"/"+status ;
             Log.e("log","Url : "+base_url);
 
             try {

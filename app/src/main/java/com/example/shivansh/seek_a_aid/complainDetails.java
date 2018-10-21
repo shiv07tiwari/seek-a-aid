@@ -32,6 +32,8 @@ public class complainDetails {
         return complain;
     }
 
+    public String getUseremail() {return useremail;}
+
     public int RedLikes() {
         return redlike;
     }

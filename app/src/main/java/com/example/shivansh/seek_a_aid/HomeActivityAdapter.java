@@ -1,6 +1,7 @@
 package com.example.shivansh.seek_a_aid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,16 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
         C_Id.setText(dataSet.get(listPosition).getComplainId());
         label.setText(dataSet.get(listPosition).getTag());
         complain.setText(dataSet.get(listPosition).getComplain());
+
+        complain.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(v.getContext(),OldComplain.class);
+                i.putExtra("compid",dataSet.get(listPosition).getComplainId());
+                v.getContext().startActivity(i);
+            }
+        });
 
         fun=false;
         fun1=false;

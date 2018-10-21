@@ -24,6 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             super(v);
             layout = v;
             txtHeader = v.findViewById(R.id.status);
+            txtFooter = v.findViewById(R.id.status_tag);
         }
     }
 
@@ -63,6 +64,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         final String name = values.get(position);
         holder.txtHeader.setText(name);
+        holder.txtFooter.setText(name);
 
     }
 
